@@ -1,6 +1,10 @@
 package com.scintillance.registry;
 
 import com.scintillance.annotation.DelegateScan;
+import com.scintillance.util.ClassUtil;
+import com.scintillance.util.StringUtil;
+import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
+import org.springframework.beans.factory.annotation.AnnotatedGenericBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.annotation.AnnotationAttributes;
@@ -16,6 +20,9 @@ public class DelegateScanRegistrar implements ImportBeanDefinitionRegistrar {
     @Override
     public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry beanDefinitionRegistry) {
         Set<String> packagesToScan = getPackagesToScan(annotationMetadata);
+        SciClassPathBeanDefinitionScanner scanner = new SciClassPathBeanDefinitionScanner(beanDefinitionRegistry, new DelegateCandidateComponentPostProcessor(), new DelegateElementCandidateComponentPostProcessor());
+        scanner.scan(packagesToScan.toArray(new String[packagesToScan.size()]));
+        registerBeanDefinition(DelegateReferencePostProcessor.class, beanDefinitionRegistry);
 
     }
 
@@ -35,5 +42,10 @@ public class DelegateScanRegistrar implements ImportBeanDefinitionRegistrar {
             return Collections.singleton(ClassUtils.getPackageName(metadata.getClassName()));
         }
         return packagesToScan;
+    }
+
+    private void registerBeanDefinition(Class beanClass, BeanDefinitionRegistry beanDefinitionRegistry) {
+        AnnotatedBeanDefinition beanDefinition = new AnnotatedGenericBeanDefinition(DelegateReferencePostProcessor.class);
+        beanDefinitionRegistry.registerBeanDefinition(StringUtil.lowerCaseInitial(beanClass.getSimpleName()), beanDefinition);
     }
 }

@@ -157,12 +157,18 @@ public class ClassUtil extends ClassUtils{
     }
 
     public static Field getDeclaredFieldByAnnotation(Class<?> type, Class<? extends Annotation> annotation) {
+        List<Field> hasAnnotationFields = getDeclaredFieldsByAnnotation(type, annotation);
+        return hasAnnotationFields.isEmpty()? null : hasAnnotationFields.get(0);
+    }
+
+    public static List<Field> getDeclaredFieldsByAnnotation(Class<?> type, Class<? extends Annotation> annotation) {
+        List<Field> fields = new ArrayList<>();
         for(Field field : getDeclaredFields(type)) {
             if(field.isAnnotationPresent(annotation)) {
                 field.setAccessible(true);
-                return field;
+                fields.add(field);
             }
         }
-        return null;
+        return fields;
     }
 }
