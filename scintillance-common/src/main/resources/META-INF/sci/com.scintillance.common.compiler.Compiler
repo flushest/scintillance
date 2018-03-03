@@ -1,0 +1,2 @@
+jdk=com.scintillance.common.compiler.JdkCompiler
+javassist=com.scintillance.common.compiler.JavassistCompiler

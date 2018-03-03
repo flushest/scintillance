@@ -8,7 +8,12 @@
     <artifactId>scintillance-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <!-- 公共工具 -->
         <module>scintillance-common</module>
+        <!-- 核心内部接口 -->
+        <module>scintillance-core</module>
+        <!-- 对外web -->
+        <module>scintillance-web</module>
     </modules>
     <packaging>pom</packaging>
     <description>资源大锅饭，人人有得吃</description>
@@ -29,7 +34,13 @@
 
     <!-- 依赖版本管理 -->
     <dependencyManagement>
-
+        <dependencies>
+            <dependency>
+                <groupId>com.scintillance</groupId>
+                <artifactId>scintillance-common</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
 
