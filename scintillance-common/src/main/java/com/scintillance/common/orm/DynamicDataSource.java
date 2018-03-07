@@ -35,8 +35,6 @@ public class DynamicDataSource extends AbstractRoutingDataSource implements Envi
     @Autowired
     private DataSourceProperties defaultDataSourceProperties;
 
-    private Map<String, String> propertyMap;
-
     private Map<Object, Object> targetDataSources = new HashMap<>();
 
     @Override
@@ -51,7 +49,7 @@ public class DynamicDataSource extends AbstractRoutingDataSource implements Envi
             DataSource dataSource = createDataSource(alia, customProperties);
             targetDataSources.put(alia, dataSource);
         }
-        
+
         setTargetDataSources(targetDataSources);
     }
 
