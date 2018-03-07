@@ -10,5 +10,6 @@ import com.scintillance.from.model.UploadFileResult;
 public interface ICollectService {
     //F001 文件上传的接口
     UploadFileResult UploadFile(UploadFileParam param);
-    //F002
+    //F002 录入资源
+
 }

@@ -5,4 +5,5 @@ package com.scintillance.from.model;
  */
 public class UploadFileParam {
     //文件(图片、书籍、音乐)
+
 }
