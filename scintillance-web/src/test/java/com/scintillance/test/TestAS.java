@@ -4,8 +4,6 @@ import com.scintillance.common.util.SpringUtil;
 import com.scintillance.common.web.ApplicationStarter;
 import org.junit.Before;
 
-import javax.swing.*;
-
 /**
  * Created by Administrator on 2018/3/2 0002.
  */

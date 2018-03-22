@@ -11,5 +11,11 @@
 
     <artifactId>scintillance-from</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.scintillance</groupId>
+            <artifactId>scintillance-common</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

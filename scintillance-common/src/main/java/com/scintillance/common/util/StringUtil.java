@@ -69,4 +69,14 @@ public class StringUtil extends StringUtils {
 
         return stringBuffer.toString();
     }
+
+    public static boolean equals(String one, String another) {
+        if(one != null) {
+            return one.equals(another);
+        }else if(another != null) {
+            return another.equals(one);
+        }else {
+            return true;
+        }
+    }
 }

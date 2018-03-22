@@ -171,4 +171,24 @@ public class ClassUtil extends ClassUtils{
         }
         return fields;
     }
+
+    public static String getClassName(Class clazz) {
+        String originalClassName = clazz.getName();
+        if(originalClassName.startsWith("[L")) {
+            return originalClassName.substring(2) + "[]";
+        }else if(originalClassName.startsWith("[")) {
+            char type = originalClassName.charAt(1);
+            switch (type) {
+                case 'B': return "byte[]";
+                case 'I': return "int[]";
+                case 'F': return "float[]";
+                case 'D': return "double[]";
+                case 'J': return "long[]";
+                case 'C': return "char[]";
+                case 'S': return "short[]";
+                case 'Z': return "boolean[]";
+            }
+        }
+        return originalClassName;
+    }
 }

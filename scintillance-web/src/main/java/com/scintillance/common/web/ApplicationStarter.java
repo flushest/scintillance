@@ -16,8 +16,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
         DataSourceTransactionManagerAutoConfiguration.class,
         HibernateJpaAutoConfiguration.class})
 @EnableAutoConfiguration
-@DelegateScan("com.scintillance.test")
-@EnabledMultiDataSource
+@DelegateScan("com.scintillance.common")
 public class ApplicationStarter {
     public static void main(String[] args) {
         SpringApplication.run(ApplicationStarter.class, args);

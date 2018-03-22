@@ -38,6 +38,14 @@
         </developer>
     </developers>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
     <!-- 依赖版本管理 -->
     <dependencyManagement>
         <dependencies>

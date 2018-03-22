@@ -73,12 +73,12 @@ public class DelegateCandidateComponentPostProcessor implements CandidateCompone
             Class<?>[] pts = method.getParameterTypes();
             Class<?>[] ets = method.getExceptionTypes();
 
-            codeBuffer.append("public ").append(rt.getName())
+            codeBuffer.append("public ").append(ClassUtil.getClassName(rt))
                     .append(" ").append(method.getName())
                     .append("(");
             for(int i=0; i<pts.length; i++) {
                 Class pt = pts[i];
-                codeBuffer.append(pt.getName()).append(" p").append(i);
+                codeBuffer.append(ClassUtil.getClassName(pt)).append(" p").append(i);
                 if(i<pts.length-1) {
                     codeBuffer.append(", ");
                 }
@@ -90,7 +90,7 @@ public class DelegateCandidateComponentPostProcessor implements CandidateCompone
             }
             for(int i=0; i<ets.length; i++) {
                 Class et = ets[i];
-                codeBuffer.append(et.getName());
+                codeBuffer.append(ClassUtil.getClassName(et));
                 if(i < ets.length-1) {
                     codeBuffer.append(",");
                 }
